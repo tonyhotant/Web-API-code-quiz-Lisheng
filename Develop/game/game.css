@@ -1,0 +1,12 @@
+.display-4 {
+    font-weight: bold;
+}
+
+.jumbotron {
+    background-color: transparent;
+    margin-left: 500px;
+}
+
+.list-group {
+    margin-right: 400px;
+}
