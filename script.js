@@ -41,7 +41,6 @@ $(document).ready(function() {
     }, 1000);
   }
 
-
   //something wrong here, this function should only show questions
   //create another function for click event and others
   function showQuestions() {
