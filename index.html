@@ -17,10 +17,15 @@
     .display-4 {
         font-weight: bold;
     }
-
     .jumbotron {
         text-align: center;
         background-color: transparent;
+    }
+    .btn {
+        margin: 10px 0px 30px 0px;
+    }
+    .form-inline {
+        text-align: center;
     }
 </style>
 
@@ -28,21 +33,47 @@
     <header>
         <nav class="navbar">
             <a class="navbar-brand" id="high-scores">View Highscores</a>
-            <div id="timer">Time: 0</div>
+            <div id="timer">Time: 30</div>
         </nav>
     </header>
     <div class="jumbotron">
         <h1 class="display-4" id="title">Coding Quiz Challenge</h1>
-        <p class="lead">
-            Try to answer the following code-related questions with the time limit.
-            Keep in mind that incorrect answers will penalize your scoreTime by ten seconds.
-        </p>
-        <a class="btn btn-primary btn-lg" role="button" id="start-button">Start Quiz</a>
+        <div id="main">
+            <p class="lead">
+                Try to answer the following code-related questions with the time limit.
+                <br>
+                Keep in mind that incorrect answers will penalize your scoreTime by ten seconds.
+            </p>
+            <a class="btn btn-primary btn-lg" role="button" id="start-button">Start Quiz</a>
+            <div id="answers-button">
+                <a class="btn btn-primary btn-lg" role="button" style="display: none" id="answer-1"></a>
+                <br>
+                <a class="btn btn-primary btn-lg" role="button" style="display: none" id="answer-2"></a>
+                <br>
+                <a class="btn btn-primary btn-lg" role="button" style="display: none" id="answer-3"></a>
+                <br>
+                <a class="btn btn-primary btn-lg" role="button" style="display: none" id="answer-4"></a>
+            </div>
+            <div style="display: none" id="result"></div>
+        </div>
+        <a class="btn btn-primary btn-lg" role="button" style="display: none" id="back"></a>
+        <a class="btn btn-primary btn-lg" role="button" style="display: none" id="clear"></a>
+
+        <form class="form-inline" style="display: none" id="input-form">
+            <div class="form-group mb-2">
+                <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Enter initials:">
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <input type="text" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">submit</button>
+        </form>
+
     </div>
-    <script src="./Develop/script.js"></script>
+    <script src="script.js"></script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
@@ -50,7 +81,7 @@
     </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-    </script>
+    </script> -->
 </body>
 
 </html>
