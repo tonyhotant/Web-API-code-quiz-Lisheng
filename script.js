@@ -20,7 +20,7 @@ $(document).ready(function() {
   });
 
   function gameStart() {
-    if (counter === questions.length - 1) {
+    if (counter === questions.length) {
       gameOver();
     } else if (scores <= 0) {
       scores = 0;
@@ -35,8 +35,9 @@ $(document).ready(function() {
     var timerInterval = setInterval(function() {
       scores--;
       $("#timer").text("Time: " + scores);
-      if (counter === questions.length - 1 || scores <= 0) {
+      if (counter === questions.length || scores <= 0) {
         clearInterval(timerInterval);
+        gameOver();
       }
     }, 1000);
   }
@@ -54,7 +55,7 @@ $(document).ready(function() {
     $("#answer-2")
       .show()
       .text(questions[counter].answer2.name)
-      .off("click")      
+      .off("click")
       .one("click", function() {
         userChoice.push(questions[counter].answer2.isCorrect);
         getResult();
@@ -62,7 +63,7 @@ $(document).ready(function() {
     $("#answer-3")
       .show()
       .text(questions[counter].answer3.name)
-      .off("click")      
+      .off("click")
       .one("click", function() {
         userChoice.push(questions[counter].answer3.isCorrect);
         getResult();
@@ -70,7 +71,7 @@ $(document).ready(function() {
     $("#answer-4")
       .show()
       .text(questions[counter].answer4.name)
-      .off("click")      
+      .off("click")
       .one("click", function() {
         userChoice.push(questions[counter].answer4.isCorrect);
         getResult();
@@ -172,7 +173,7 @@ $(document).ready(function() {
       answer2: { name: "b. I'm answer22", isCorrect: false },
       answer3: { name: "c. I'm answer23", isCorrect: true },
       answer4: { name: "d. I'm answer24", isCorrect: false }
-    }        
+    }
   ];
 
   //TO DO:
