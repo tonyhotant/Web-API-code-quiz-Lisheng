@@ -9,7 +9,7 @@ $(document).ready(function() {
 
   var counter = -1;
   var userChoice = [];
-  var scores = 3000;
+  var scores = 50;
 
   $("#start-button").one("click", function() {
     $("p").hide();
@@ -41,13 +41,12 @@ $(document).ready(function() {
     }, 1000);
   }
 
-  //something wrong here, this function should only show questions
-  //create another function for click event and others
   function showQuestions() {
     $("#title").text(questions[counter].title);
     $("#answer-1")
       .show()
       .text(questions[counter].answer1.name)
+      .off("click")
       .one("click", function() {
         userChoice.push(questions[counter].answer1.isCorrect);
         getResult();
@@ -55,6 +54,7 @@ $(document).ready(function() {
     $("#answer-2")
       .show()
       .text(questions[counter].answer2.name)
+      .off("click")      
       .one("click", function() {
         userChoice.push(questions[counter].answer2.isCorrect);
         getResult();
@@ -62,6 +62,7 @@ $(document).ready(function() {
     $("#answer-3")
       .show()
       .text(questions[counter].answer3.name)
+      .off("click")      
       .one("click", function() {
         userChoice.push(questions[counter].answer3.isCorrect);
         getResult();
@@ -69,6 +70,7 @@ $(document).ready(function() {
     $("#answer-4")
       .show()
       .text(questions[counter].answer4.name)
+      .off("click")      
       .one("click", function() {
         userChoice.push(questions[counter].answer4.isCorrect);
         getResult();
@@ -138,25 +140,39 @@ $(document).ready(function() {
     },
     {
       title: "i'm the question2",
-      answer1: { name: "a. I'm answer5", isCorrect: true },
-      answer2: { name: "b. I'm answer6", isCorrect: false },
+      answer1: { name: "a. I'm answer5", isCorrect: false },
+      answer2: { name: "b. I'm answer6", isCorrect: true },
       answer3: { name: "c. I'm answer7", isCorrect: false },
       answer4: { name: "d. I'm answer8", isCorrect: false }
     },
     {
       title: "i'm the question3",
-      answer1: { name: "a. I'm answer9", isCorrect: true },
+      answer1: { name: "a. I'm answer9", isCorrect: false },
       answer2: { name: "b. I'm answer10", isCorrect: false },
-      answer3: { name: "c. I'm answer11", isCorrect: false },
+      answer3: { name: "c. I'm answer11", isCorrect: true },
       answer4: { name: "d. I'm answer12", isCorrect: false }
     },
     {
       title: "i'm the question4",
-      answer1: { name: "a. I'm answer13", isCorrect: true },
+      answer1: { name: "a. I'm answer13", isCorrect: false },
       answer2: { name: "b. I'm answer14", isCorrect: false },
       answer3: { name: "c. I'm answer15", isCorrect: false },
-      answer4: { name: "d. I'm answer16", isCorrect: false }
-    }
+      answer4: { name: "d. I'm answer16", isCorrect: true }
+    },
+    {
+      title: "i'm the question5",
+      answer1: { name: "a. I'm answer17", isCorrect: true },
+      answer2: { name: "b. I'm answer18", isCorrect: false },
+      answer3: { name: "c. I'm answer19", isCorrect: false },
+      answer4: { name: "d. I'm answer20", isCorrect: false }
+    },
+    {
+      title: "i'm the question6",
+      answer1: { name: "a. I'm answer21", isCorrect: false },
+      answer2: { name: "b. I'm answer22", isCorrect: false },
+      answer3: { name: "c. I'm answer23", isCorrect: true },
+      answer4: { name: "d. I'm answer24", isCorrect: false }
+    }        
   ];
 
   //TO DO:
