@@ -96,6 +96,10 @@ $(document).ready(function() {
 
   function getScores() {
     //save user's score to local storage
+    var initial = $("#initial").val();
+    localStorage.setItem("initial", initial);
+    console.log(initial);
+    //exact initial and scores to a new 
   }
 
   function gameOver() {
@@ -105,7 +109,9 @@ $(document).ready(function() {
       .show()
       .text("Your final score is " + scores);
     $("#input-form").show();
+    console.log(userChoice);
     getScores();
+    highScores();
 
     //add click event to submit button
     //jump to highscore page
@@ -177,8 +183,8 @@ $(document).ready(function() {
   ];
 
   //TO DO:
-  //add coundown timer
   //build user score system
   //build user input form page
   //change button text color to white
+  //negative scores handle
 });

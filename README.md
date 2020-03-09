@@ -37,3 +37,4 @@ v1.0 08/03/20 initial release
   3. change button text color to white
   4. input-form style issue
   5. better/more questions/answers
+  6. simplify code
