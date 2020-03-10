@@ -1,19 +1,18 @@
 $(document).ready(function() {
-  //need a Reset function here for "go back" button
-  //need some way to handle game refresh
-  function reset() {
-    var counter = -1;
-    var userChoice = [];
-    var scores = 30;
-  }
-
   var counter = -1;
   var userChoice = [];
   var scores = 50;
 
+  function initializeGame() {
+    counter = -1;
+    userChoice = [];
+    scores = 50;
+    $("#main").show();
+    $("#back, #clear").hide();
+  }
+
   $("#start-button").one("click", function() {
-    $("p").hide();
-    $("#start-button").hide();
+    $("p, #start-button").hide();
     $("#answers-button").show();
     gameStart();
     startTimer();
@@ -43,6 +42,7 @@ $(document).ready(function() {
   }
 
   function showQuestions() {
+    //need refactor so just one click event
     $("#title").text(questions[counter].title);
     $("#answer-1")
       .show()
@@ -94,12 +94,33 @@ $(document).ready(function() {
     //need fadeout result
   }
 
+  // function displayMessage(type, message) {
+  //   msgDiv.textContent = message;
+  //   msgDiv.setAttribute("class", type);
+  // }
+
   function getScores() {
     //save user's score to local storage
-    var initial = $("#initial").val();
-    localStorage.setItem("initial", initial);
-    console.log(initial);
-    //exact initial and scores to a new 
+    $("#submit").on("click", function(event) {
+      event.preventDefault();
+      var user = {
+        userName: $("#initial")
+          .val()
+          .trim(),
+        userScore: scores
+      };
+
+      // if (user.userName === "") {
+      //   displayMessage("error", "Initial cannot be blank");
+      // } else {
+      //   displayMessage("success", "Entered successfully");
+
+      localStorage.setItem("user", JSON.stringify(user));
+
+      var userList = JSON.parse(localStorage.getItem("user"));
+      $("#user-list").text(userList.userName + userList.userScore);
+      highScores();
+    });
   }
 
   function gameOver() {
@@ -109,9 +130,7 @@ $(document).ready(function() {
       .show()
       .text("Your final score is " + scores);
     $("#input-form").show();
-    console.log(userChoice);
     getScores();
-    highScores();
 
     //add click event to submit button
     //jump to highscore page
@@ -124,17 +143,20 @@ $(document).ready(function() {
   });
 
   function highScores() {
-    $("header").hide();
-    $("#main").hide();
+    $("#input-form, header, #main").hide();
     $("#title").text("Highscores");
     $("#back")
       .show()
-      .text("Go Back");
-    //need add click event here to go back
+      .text("Go Back")
+      .on("click", function() {
+        initializeGame();
+      });
     $("#clear")
       .show()
-      .text("Clear Highscores");
-    //need add click event here to empty score
+      .text("Clear Highscores")
+      .on("click", function() {
+        $("#user-list").empty();
+      });
   }
 
   var questions = [
