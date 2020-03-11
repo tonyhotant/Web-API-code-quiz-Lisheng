@@ -2,6 +2,7 @@ $(document).ready(function() {
   var counter = -1;
   var userChoice = [];
   var scores = 50;
+  var userArr = [];
 
   function initializeGame() {
     counter = -1;
@@ -110,15 +111,24 @@ $(document).ready(function() {
         userScore: scores
       };
 
-      // if (user.userName === "") {
-      //   displayMessage("error", "Initial cannot be blank");
-      // } else {
-      //   displayMessage("success", "Entered successfully");
+      if (user.userName === "") {
+        return;
+      }
 
-      localStorage.setItem("user", JSON.stringify(user));
+      //convert value to string
+      localStorage.setItem("user", JSON.stringify(userArr));
 
-      var userList = JSON.parse(localStorage.getItem("user"));
-      $("#user-list").text(userList.userName + userList.userScore);
+      userArr.push(user);
+      user = {};
+      userArr.sort();
+
+      //not sure if it's working
+      for (i = 0; i < userArr.length; i++) {
+        var userList = JSON.parse(localStorage.getItem(userArr[i]));
+        console.log(userList);
+
+        $("#user-list").text(userList.userName + userList[i].userScore);
+      }
       highScores();
     });
   }
@@ -132,8 +142,6 @@ $(document).ready(function() {
     $("#input-form").show();
     getScores();
 
-    //add click event to submit button
-    //jump to highscore page
     //need append user info + result
     //sort user scores in order
   }
@@ -206,7 +214,6 @@ $(document).ready(function() {
 
   //TO DO:
   //build user score system
-  //build user input form page
   //change button text color to white
   //negative scores handle
 });
