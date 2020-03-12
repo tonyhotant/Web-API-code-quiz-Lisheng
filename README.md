@@ -33,8 +33,9 @@ v1.0 08/03/20 initial release
 ## To do
 
   1. build user score system
-  2. build user input form page
+  2. sort highscores in order
   3. change button text color to white
-  4. input-form style issue
-  5. better/more questions/answers
-  6. simplify code
+  4. input-form need be centred
+  5. handle negative scores
+  6. better/more questions/answers
+  7. simplify code

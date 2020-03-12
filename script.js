@@ -5,6 +5,7 @@ $(document).ready(function() {
   var userArr = [];
 
   function initializeGame() {
+    $("#title").text("Coding Quiz Challenge");
     counter = -1;
     userChoice = [];
     scores = 50;
@@ -115,7 +116,7 @@ $(document).ready(function() {
         return;
       }
 
-      //convert value to string
+      //convert value to JSON string
       localStorage.setItem("user", JSON.stringify(userArr));
 
       userArr.push(user);
